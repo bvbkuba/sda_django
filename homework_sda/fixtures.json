@@ -1,0 +1,1 @@
+[{"model": "course.technology", "pk": 1, "fields": {"name": "IT"}}, {"model": "course.course", "pk": 1, "fields": {"title": "SDA", "technology_id": 1, "description": "Description...", "starts": "2020-10-03", "finished": null, "max_atendees_count": 7, "price": 10.0, "remote": false, "test": "2020-10-03T13:55:15.448Z"}}]

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Welcome to our courses</h1>
+    <ol>
+        {% for course in object_list %}
+            <li>
+                {{ course.title}} [{{course.technology_id}}] Price : {{course.price}}
+            </li> 
+        {% endfor %}  
+    </ol>
+{% endblock %}

@@ -17,11 +17,15 @@ from django.contrib import admin
 from django.urls import path
 from course.views import hello
 from course.models import Technology, Course
+from course import views
 
 admin.site.register(Technology)
 admin.site.register(Course)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('hello', hello)
+    path('hello', hello),
+    path('', views.CoursesView.as_view()),
+    path('courses/', views.CoursesView.as_view())
+
 ]
