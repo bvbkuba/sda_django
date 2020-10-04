@@ -18,6 +18,7 @@ from django.urls import path
 from course.views import hello
 from course.models import Technology, Course
 from course import views
+from course.views import CoursesCreateView
 
 admin.site.register(Technology)
 admin.site.register(Course)
@@ -26,6 +27,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('hello', hello),
     path('', views.CoursesView.as_view()),
-    path('courses/', views.CoursesView.as_view())
+    path('courses/', views.CoursesView.as_view()),
+    path('course/create',CoursesCreateView.as_view(), name = 'course_create')
 
 ]
