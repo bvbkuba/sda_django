@@ -22,4 +22,5 @@ class CoursesView(ListView):
 class CoursesCreateView(FormView):
     template_name = 'forms.html'
     form_class = CourseForm
+    success_url = '/courses/'
 
