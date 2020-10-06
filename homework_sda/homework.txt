@@ -1,0 +1,93 @@
+<!-- 1. Inicjalizacja aplikacji
+    - dodaj aplikację 'courses' używając polecenia 'startapp'
+    - zarejestruj aplikację w pliku ustawień (settings.py)
+    - dodaj testowy widok funkcyjny zwracający odpowiedź HTTP z tekstem 'Witaj w swiecie kursow SDA!' i zarejestruj go w urls.py
+    - uruchom serwer i sprawdź czy widzisz tekst 'Witaj w swiecie kursow SDA!' -->
+<!-- 2. Inicjalizacja struktury bazy danych
+    - utwórz model bazy dla wpisów (courses-schema.png)
+    - dodaj i przeprowadź migrację używając komend 'makemigrations' i 'migrate'
+    - utwórz kilka wpisów do bazy z powłoki Django (skopiuj wydawane w powłoce komendy)
+    - zarejestruj panel administratora dla kursów i technologii
+    - utwórz administratora komendą createsuperuser
+    - dodaj kilka wpisów do bazy z panelu administratora
+    - wyeksportuj fikstury komendą 'dumpdata'
+    - w celu przetestowania poprawności wyeksportowanych fikstur, usuń bazę (plik db.sqlite3) i dodaj na nowo fikstury komendą 'loaddata' (nie zapomnij by wcześniej przeprowadzić na nowo migrację!) -->
+3. Lista kursów
+    <!-- - upewnij się czy masz zainstalowany dodatek django-bootstrap4; jeśli nie - zacznij od jego instalacji przy użyciu modułu pip
+    - dodaj bazowy szablon Bootstrapa wprowadzony podczas prezentacji -->
+    - dodaj szablon z listą kursów - kursy powinny wyświetlać się w kolejności od najtańszego do najdroższego, kursy rozpoczęte w przeszłości nie powinny się wyświetlić, a wyświetlone kursy powinny pojawić się w formacie listy uporządkowanej (HTML-owy tag '<ol></ol>') 'Tytuł kursu [technologia] (cena)' (np. 'Technologie backendowe [Python] (150 PLN)')
+    <!-- - dodaj i zarejestruj w urls.py widok renderujący szablon z listą kursów -->
+    <!-- - podlinkuj listę pod przyciskiem 'Home' na navbarze i pod nazwą projektu 'SDA-World'
+    - sprawdź czy widzisz dodane przez siebie kursy na stronie głównej -->
+    <!-- - [BONUS] upiększ widok listy według własnego uznania, by czuć się z nim dobrze :) nie poświęcaj jednak na to zbyt dużo czasu (a przynajmniej nie przeznaczonego na naukę technologii backendowych), bo kwestie estetyczne to zakres odpowiedzialności frontendowca -->
+4. Formularze
+    <!-- - dodaj formularz Django dla modelu kursu -->
+    <!-- - nie pozwól by kursy rozpoczynały się w przeszłości (walidacja) -->
+    - nie pozwól by kursy kończyły się wcześniej niż się rozpoczynają (walidacja)
+    - popraw formatowanie niewłaściwych opisów wg algorytmu opisanego podczas prezentacji (oczyszczanie)
+    - cenę zaokrąglij do części setnych (oczyszczanie)
+    - upewnij się, że inne ograniczenia rozpisane w scheme'ie będą zachowane (walidacja)
+    - stworzonego formularza użyj w widoku do dodawania kursów
+    - stwórz szablon dla formularza
+    - zarejestruj widok dodawania kursu w urls.py
+    - przetestuj wyświetlanie formularza dodawania kursów
+    - przetestuj walidację formularza dodawania kursów
+    - upewnij się, że zatwierdzenie poprawnych danych skutkuje dodaniem wpisu do bazy
+    - ustaw przekierowanie w przypadku sukcesu na stronę główną
+    - przygotowanego formularza użyj w widoku aktualizacji kursu
+    - zarejestruj widok aktualizacji kursu w urls.py
+    - przetestuj widok aktualizacji kursu
+    - stwórz widok i szablon usuwania kursu
+    - zarejestruj widok usuwania kursu w urls.py
+    - przetestuj widok usuwania kursu
+5. Zaawansowany układ formularza
+    - w formularzu kursów ustaw pola w kolejności:
+      - pierwszy wiersz: tytuł, technologia
+      - drugi wiersz: opis
+      - podtytuł: "czas i tryb"
+      - trzeci wiersz: data początkowa, data końcowa, czy kurs zdalny
+      - podtytuł: "dla kursantów"
+      - czwarty wiersz: maksymalna liczba kursantów, cena kursu
+      - na zielonym (btn-success) przycisku zatwierdzającym wyświetl napis "Dodaj kurs"
+      - dodaj czerwony (btn-danger) przycisk "anuluj" będący linkiem do strony głównej (znacznik html "a" o klasie "btn" linkujący do indeksu aplikacji)
+    - do opisu układu użyj najpierw standardowego renderowania kodu HTML w szablonie, a następnie crispy forms
+6. Autentykacja
+    - dodaj ekran logowania, zmiany hasła i link do wylogowywania z systemu
+    - pamiętaj by poprawnie skonfigurować przekierowania i ekrany potwierdzenia akcji autentykacyjnych
+    - wymagaj, by użytkownik był zalogowany, gdy stara się uzyskać dostęp do wszystkich elementów CRUD kursu poza wyświetlaniem listy kursów
+    - zadbaj, by autentykacja stanowiła osobną aplikację w projekcie
+7. Autoryzacja
+    - wymagaj, by użytkownicy mieli odpowiednie uprawnienia, gdy starają się uzyskać dostęp do operacji manipulacyjnych danymi z tabeli kursów
+    - dodaj test na status personelu podczas aktualizacji kursu
+    - dodaj test na status administratora podczas usuwania kursu
+8. Rejestracja
+    - dodaj możliwość rejestracji użytkowników
+    - model użytkownika rozszerz o specyfikację technologii w relacji wiele do wielu
+    - zintegruj rozszerzony model użytkownika z formularzem rejestracji
+    - zadbaj, by w bazie danych nie pozostawały "bezpańskie" wpisy (użytkownik bez profilu lub profil bez użytkownika) w razie niepowodzenia operacji zatwierdzania formularza rejestracyjnego
+9. Tytuły
+    - sprawdź czy na każdej ze stron znajdują się tytuły
+    - zrefaktoruj kod backendu, by nie powtarzać tagów HTML w szablonach i kontekstach
+10. Media
+    - dodaj możliwość uploadowania pliku tekstowego z programem kursu
+    - w walidacji sprawdź czy dostarczony plik istotnie jest tekstowy
+    - skonfiguruj media, by plik był poprawnie przechowywany na dysku
+11. Pliki statyczne
+    - wykaż się! :) dodaj css lub js upiększający serwis
+    - zadbaj, by jak na plik statyczny przystało był pobierany za pomocą narzędzi do zarządzania treściami statycznymi Django
+12. Wiadomości
+    - używając frameworka messages dodaj po pomyślnej akceptacji każdego formularza krótkie podsumowanie co stało się w aplikacji
+13. Stronnicowanie
+    - pozwól by na stronie kursów wyświetlały się jednocześnie tylko 3 pozycje
+    - dodaj linki do pierwszej, poprzedniej, obecnej, następnej i ostatniej strony listy
+14. Testy
+    - dodaj testy przywilejów do aplikacji kursów
+    - sprawdź czy operacje CUD zmieniają wpisy kursów w bazie
+    - przetesuj abstrakcję swojego formularza - w szczególności sprawdź scenariusze walidacyjne
+15. REST API
+    - dodaj interfejs REST-owy dla technologii i kursów
+    - wyłącz możliwość dodawania, edycji i usuwania technologii
+    - w widoku listy nie zwracaj opisu i liczby kursantów
+    - spraw, by obiekt kursu przez REST-owe API był edytowalny - włącznie z możliwością przypisywania technologii
+    - dodaj stronnicowanie kursów zależne od użytkownika z maksymalnym rozmiarem strony równym 10 wpisów
+    - zaimplementuj dostęp do API jedynie za okazaniem stosownego tokena
