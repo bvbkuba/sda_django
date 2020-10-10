@@ -18,9 +18,13 @@ class CoursesView(ListView):
     template_name = 'courses.html'
     model = Course
     ordering = ['price']
+    
 
 class CoursesCreateView(FormView):
     template_name = 'forms.html'
     form_class = CourseForm
     success_url = '/courses/'
-
+    def form_valid(self,form):
+        pass
+    # prezentation page 49 to use
+        # Course.objects.create(form)
